@@ -90,7 +90,7 @@ export const Hero = () => {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           data-cursor-hover
-          className={`font-display text-[13vw] leading-[0.82] md:text-[17vw] ${revealed ? "animate-glow-pulse" : ""}`}
+          className={`font-display text-[14.5vw] leading-[0.82] md:text-[17vw] ${revealed ? "animate-glow-pulse" : ""}`}
           style={{
             color: hover ? "hsl(var(--accent))" : "transparent",
             WebkitTextStroke: hover ? "0" : "clamp(1.5px, 1vw, 4px) hsl(var(--paper))",

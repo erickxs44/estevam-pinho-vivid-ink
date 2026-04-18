@@ -56,7 +56,7 @@ export const Booking = () => {
           <span className="inline-block border-brutal-2 bg-yellow px-3 py-1 font-mono-brutal text-xs font-bold uppercase">
             [04] Booking
           </span>
-          <h2 className="mt-4 font-display text-[10vw] sm:text-5xl text-paper md:text-8xl leading-tight">
+          <h2 className="mt-4 font-display text-[11.5vw] sm:text-5xl text-paper md:text-8xl leading-tight">
             ORÇAMENTO<br />
             <span className="bg-accent px-3 text-paper">PERSONALIZADO</span>
           </h2>

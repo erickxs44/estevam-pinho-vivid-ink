@@ -22,7 +22,7 @@ export const Contact = () => {
           <span className="inline-block border-brutal-2 border-yellow bg-secondary px-3 py-1 font-mono-brutal text-xs font-bold uppercase text-paper">
             [05] Localização
           </span>
-          <h2 className="mt-4 font-display text-5xl leading-tight text-paper md:text-7xl">
+          <h2 className="mt-4 font-display text-[13vw] sm:text-6xl leading-tight text-paper md:text-7xl">
             <span style={{ color: "hsl(var(--glow-blue))" }}>VEM</span><br />
             VISITAR<br />
             <span style={{ color: "hsl(var(--glow-purple))" }}>O ATELIER.</span>
