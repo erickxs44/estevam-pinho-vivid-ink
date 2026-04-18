@@ -93,12 +93,12 @@ export const Hero = () => {
           className={`font-display text-[22vw] leading-[0.82] md:text-[17vw] ${revealed ? "animate-glow-pulse" : ""}`}
           style={{
             color: hover ? "hsl(var(--accent))" : "transparent",
-            WebkitTextStroke: hover ? "0" : "4px hsl(var(--paper))",
+            WebkitTextStroke: hover ? "0" : "clamp(1.5px, 1vw, 4px) hsl(var(--paper))",
             transition: "color 0.4s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
           {["ESTEVAM", "PINHO"].map((word, i) => (
-            <span key={word} className="block overflow-hidden">
+            <span key={word} className="block overflow-hidden pb-4 -mb-4 px-2 -mx-2">
               <motion.span
                 initial={{ y: "110%", opacity: 0, scale: 0.98 }}
                 animate={

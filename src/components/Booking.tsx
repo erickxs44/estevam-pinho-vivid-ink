@@ -56,7 +56,7 @@ export const Booking = () => {
           <span className="inline-block border-brutal-2 bg-yellow px-3 py-1 font-mono-brutal text-xs font-bold uppercase">
             [04] Booking
           </span>
-          <h2 className="mt-4 font-display text-6xl text-paper md:text-8xl">
+          <h2 className="mt-4 font-display text-[10vw] sm:text-5xl text-paper md:text-8xl leading-tight">
             ORÇAMENTO<br />
             <span className="bg-accent px-3 text-paper">PERSONALIZADO</span>
           </h2>
@@ -143,7 +143,7 @@ export const Booking = () => {
             className="mt-5"
           >
             <label className={labelClass}>Preferência de cores *</label>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {([
                 { v: "color", l: "COLORIDO", c: "bg-accent text-paper" },
                 { v: "blackwork", l: "BLACKWORK", c: "bg-ink text-yellow" },

@@ -44,9 +44,9 @@ export const Portfolio = () => {
             <span className="inline-block border-brutal-2 border-yellow bg-accent px-3 py-1 font-mono-brutal text-xs font-bold uppercase text-paper">
               [03] Portfolio
             </span>
-            <h2 className="mt-4 font-display text-6xl text-paper md:text-8xl">
+            <h2 className="mt-4 font-display text-[11vw] sm:text-6xl text-paper md:text-8xl leading-none">
               <span className="text-yellow">PEÇAS</span><br />
-              <span className="text-stroke-thin" style={{ WebkitTextStroke: "2px hsl(var(--paper))" }}>
+              <span className="text-stroke-thin" style={{ WebkitTextStroke: "min(2px, 0.5vw) hsl(var(--paper))" }}>
                 SELECIONADAS.
               </span>
             </h2>
