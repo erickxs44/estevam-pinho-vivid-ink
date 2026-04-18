@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ESTEVAM PINHO — CMYK BRUTALIST DESIGN SYSTEM
+   ============================================ */
+
+@layer base {
+  :root {
+    /* DARK LUXE palette — Deep Purple + Midnight Blue */
+    --cyan: 222 80% 28%;         /* Midnight Blue (mantém var name p/ compat) */
+    --magenta: 280 70% 32%;      /* Deep Purple / Grape */
+    --yellow: 48 95% 55%;        /* warm gold accent */
+    --ink: 0 0% 0%;              /* pure black */
+    --paper: 0 0% 98%;           /* off-white */
+
+    /* Glow tokens */
+    --glow-purple: 280 85% 55%;
+    --glow-blue: 222 95% 55%;
+
+    /* Shadcn semantic mapping */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 280 70% 32%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 222 80% 28%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 280 70% 32%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 280 85% 55%;
+    --radius: 0;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 60 100% 50%;
+    --sidebar-accent: 300 100% 50%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 0%;
+    --sidebar-ring: 300 100% 50%;
+
+    /* Brutalist hard shadows */
+    --shadow-brutal: 8px 8px 0 0 hsl(var(--ink));
+    --shadow-brutal-lg: 12px 12px 0 0 hsl(var(--ink));
+    --shadow-brutal-cyan: 8px 8px 0 0 hsl(var(--cyan));
+    --shadow-brutal-magenta: 8px 8px 0 0 hsl(var(--magenta));
+    --shadow-brutal-yellow: 8px 8px 0 0 hsl(var(--yellow));
+  }
+
+  .dark { /* same — single mode */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Mono', monospace;
+    cursor: none;
+  }
+  ::selection {
+    background: hsl(var(--magenta));
+    color: hsl(var(--yellow));
+  }
+}
+
+/* ============================================
+   NOISE / GRAIN OVERLAY (print texture)
+   ============================================ */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Dark luxe gradient backgrounds (replaces former CMYK gradient) */
+.noisy-gradient-cmy {
+  background:
+    radial-gradient(at 20% 30%, hsl(var(--glow-blue) / 0.55) 0px, transparent 55%),
+    radial-gradient(at 80% 20%, hsl(var(--glow-purple) / 0.55) 0px, transparent 55%),
+    radial-gradient(at 60% 90%, hsl(var(--secondary) / 0.5) 0px, transparent 55%),
+    hsl(var(--ink));
+}
+
+/* ============================================
+   BRUTAL UTILITIES
+   ============================================ */
+@layer utilities {
+  .border-brutal { border: 4px solid hsl(var(--ink)); }
+  .border-brutal-2 { border: 2px solid hsl(var(--ink)); }
+  .shadow-brutal { box-shadow: var(--shadow-brutal); }
+  .shadow-brutal-lg { box-shadow: var(--shadow-brutal-lg); }
+  .shadow-brutal-cyan { box-shadow: 8px 8px 0 0 hsl(var(--cyan)); }
+  .shadow-brutal-magenta { box-shadow: 8px 8px 0 0 hsl(var(--magenta)); }
+  .shadow-brutal-yellow { box-shadow: 8px 8px 0 0 hsl(var(--yellow)); }
+
+  .font-display {
+    font-family: 'Archivo Black', 'Arial Black', sans-serif;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+  .font-mono-brutal {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 3px hsl(var(--ink));
+    color: transparent;
+    transition: color 0.2s ease;
+  }
+  .text-stroke:hover {
+    color: hsl(var(--magenta));
+  }
+
+  .text-stroke-thin {
+    -webkit-text-stroke: 1.5px hsl(var(--ink));
+    color: transparent;
+  }
+
+  /* Animated marquee */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 18s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee 22s linear infinite reverse;
+  }
+
+  /* Pulsing glow for hero title */
+  @keyframes glow-pulse {
+    0%, 100% {
+      text-shadow:
+        0 0 20px hsl(var(--glow-purple) / 0.6),
+        0 0 40px hsl(var(--glow-purple) / 0.4),
+        0 0 80px hsl(var(--glow-blue) / 0.3);
+    }
+    50% {
+      text-shadow:
+        0 0 30px hsl(var(--glow-purple) / 0.9),
+        0 0 60px hsl(var(--glow-purple) / 0.6),
+        0 0 120px hsl(var(--glow-blue) / 0.5);
+    }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 2.8s ease-in-out infinite;
+  }
+
+  /* Hover invert */
+  .hover-invert {
+    transition: all 0.15s ease;
+  }
+  .hover-invert:hover {
+    background: hsl(var(--ink)) !important;
+    color: hsl(var(--yellow)) !important;
+  }
+
+  /* Tactile button click */
+  .btn-tactile {
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .btn-tactile:active {
+    transform: translate(8px, 8px);
+    box-shadow: 0 0 0 0 hsl(var(--ink)) !important;
+  }
+}
