@@ -45,18 +45,18 @@ export const About = () => {
             <div className="relative lg:col-span-4">
               <div className="relative">
                 <img
-                  src={artistWork}
-                  alt="Estevam Pinho a trabalhar com máquina de tatuagem"
+                  src="/WhatsApp%20Image%202026-04-18%20at%2013.58.52.jpeg"
+                  alt="Estevam Pinho"
                   loading="lazy"
                   width={1280}
                   height={1280}
-                  className="border-brutal shadow-brutal-magenta w-full -rotate-2"
+                  className="border-brutal shadow-brutal-magenta w-full -rotate-2 aspect-square object-cover"
                 />
                 <div className="absolute -bottom-6 -right-4 border-brutal bg-yellow px-4 py-2 font-display text-xl rotate-3 text-ink">
                   EST. 2018
                 </div>
                 <div className="absolute -top-4 -left-4 border-brutal-2 bg-secondary px-3 py-1 font-mono-brutal text-xs font-bold uppercase -rotate-3 text-paper">
-                  ▶ ATELIER
+                  ▶ ARTISTA
                 </div>
               </div>
             </div>
