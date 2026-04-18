@@ -32,7 +32,7 @@ export const Contact = () => {
               <MapPin className="h-6 w-6 shrink-0 text-yellow" strokeWidth={3} />
               <div>
                 <div className="font-mono-brutal text-xs font-bold uppercase text-yellow">Endereço</div>
-                <div className="font-display text-xl text-paper">Rua das Flores, 88<br />4050-262 Porto, Portugal</div>
+                <div className="font-display text-xl text-paper">Estr. Serra da Mira 38A<br />2650-388 Amadora, Portugal</div>
               </div>
             </div>
             <div className="flex items-start gap-4 border-brutal-2 bg-ink p-4" style={{ borderColor: "hsl(var(--glow-purple))" }}>
@@ -45,61 +45,36 @@ export const Contact = () => {
           </div>
         </motion.div>
 
-        {/* Stylized map */}
+        {/* Real Google Map */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7"
         >
-          <div className="relative h-96 overflow-hidden border-brutal shadow-brutal-magenta md:h-[520px]">
-            {/* Stylized map background */}
-            <div className="absolute inset-0 bg-[#1a1a1a]">
-              <svg className="h-full w-full" viewBox="0 0 600 500" preserveAspectRatio="none">
-                <defs>
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2a2a" strokeWidth="1" />
-                  </pattern>
-                </defs>
-                <rect width="600" height="500" fill="url(#grid)" />
-                {/* River — Douro */}
-                <path
-                  d="M0 320 Q150 280 300 310 T 600 290 L600 360 Q450 380 300 360 T 0 380 Z"
-                  fill="hsl(var(--glow-blue))"
-                  opacity="0.55"
-                />
-                {/* Roads */}
-                <path d="M0 200 L600 220" stroke="hsl(var(--glow-purple))" strokeWidth="3" opacity="0.7" />
-                <path d="M150 0 L180 500" stroke="hsl(var(--glow-purple))" strokeWidth="3" opacity="0.5" />
-                <path d="M400 0 L420 500" stroke="hsl(var(--yellow))" strokeWidth="2" opacity="0.5" />
-                <path d="M0 100 L600 130" stroke="#444" strokeWidth="2" />
-                {/* Building blocks */}
-                {[
-                  [80, 80, 60, 50], [200, 60, 80, 40], [340, 80, 50, 60], [460, 50, 70, 50],
-                  [60, 160, 70, 30], [220, 150, 90, 40], [380, 170, 60, 30], [500, 160, 60, 40],
-                  [100, 230, 50, 40], [240, 240, 60, 30], [360, 250, 70, 30],
-                ].map(([x, y, w, h], i) => (
-                  <rect key={i} x={x} y={y} width={w} height={h} fill="#2d2d2d" stroke="#444" strokeWidth="1" />
-                ))}
-              </svg>
-              {/* Pin */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative"
-                >
-                  <div className="border-brutal bg-yellow px-3 py-2 font-display text-base uppercase shadow-brutal text-ink">
-                    📍 ATELIER EP
-                  </div>
-                  <div className="mx-auto h-8 w-1 bg-yellow border-brutal-2" />
-                </motion.div>
-              </div>
-            </div>
+          <div className="relative h-96 overflow-hidden border-brutal shadow-brutal-magenta md:h-[520px] grayscale contrast-125 invert brightness-75">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.45561113063!2d-9.2311198!3d38.7657731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecc885f8188fb%3A0xed5668b0c8973b4!2sEstr.%20Serra%20da%20Mira%2038A%2C%202650-388%20Amadora%2C%20Portugal!5e0!3m2!1spt!2spt!4v1713460000000!5m2!1spt!2spt"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div className="pointer-events-none absolute inset-0 border-brutal-4 border-ink/20" />
             <div className="absolute top-4 left-4 border-brutal-2 bg-ink px-3 py-1 font-mono-brutal text-[10px] font-bold uppercase" style={{ color: "hsl(var(--glow-blue))" }}>
-              ▸ PORTO • 41.1496° N
+              ▸ LOCALIZAÇÃO • AMADORA
             </div>
+            <a 
+              href="https://maps.app.goo.gl/vwY1ysti67JzjrLv8" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="absolute bottom-4 right-4 border-brutal bg-yellow px-4 py-2 font-display text-sm uppercase text-ink hover:bg-white transition-colors"
+            >
+              Abrir no Maps ↗
+            </a>
           </div>
         </motion.div>
       </div>

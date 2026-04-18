@@ -63,35 +63,63 @@ export const About = () => {
 
             {/* Right — zine text */}
             <div className="space-y-6 lg:col-span-5">
-              <p className="font-display text-3xl leading-tight text-ink md:text-4xl">
+              <motion.p 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="font-display text-3xl leading-tight text-ink md:text-4xl"
+              >
                 <span className="bg-accent px-2 text-paper">Tinta preta</span>, blocos de cor profunda
                 e linhas que <span className="bg-yellow px-2 text-ink">não pedem desculpa</span>.
-              </p>
-              <p className="font-mono-brutal text-base leading-relaxed text-ink/80">
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="font-mono-brutal text-base leading-relaxed text-ink/80"
+              >
                 Sou o Estevam — tatuador radicado no Porto há mais de 6 anos. Trabalho na
                 interseção entre o blackwork tradicional e uma estética dark, gráfica
                 e editorial. Cada peça é desenhada de raiz para quem a vai carregar.
-              </p>
-              <p className="font-mono-brutal text-base leading-relaxed text-ink/80">
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="font-mono-brutal text-base leading-relaxed text-ink/80"
+              >
                 O meu estilo é direto, gráfico, e sem filtros. Penso cada tatuagem como
                 um cartaz brutalista impresso para sempre na pele.
-              </p>
+              </motion.p>
 
               {/* Stats grid */}
-              <div className="grid grid-cols-3 gap-3 pt-4">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+                className="grid grid-cols-3 gap-3 pt-4"
+              >
                 {[
                   { n: "600+", l: "Peças", c: "bg-secondary text-paper" },
                   { n: "6 anos", l: "Atelier", c: "bg-yellow text-ink" },
                   { n: "PT", l: "Base", c: "bg-accent text-paper" },
                 ].map((s, i) => (
-                  <div key={i} className={`border-brutal p-3 ${s.c}`}>
+                  <motion.div 
+                    key={i} 
+                    whileHover={{ y: -5, scale: 1.05 }}
+                    className={`border-brutal p-3 ${s.c}`}
+                  >
                     <div className="font-display text-3xl md:text-4xl">{s.n}</div>
                     <div className="font-mono-brutal text-[10px] font-bold uppercase">
                       {s.l}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

@@ -29,16 +29,24 @@ export const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen w-full overflow-hidden border-b-4 border-ink">
-      {/* Background video */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/hero-sphere.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      {/* Background video with parallax */}
+      <motion.div 
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-0 h-full w-full"
+      >
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover"
+          src="/hero-sphere.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </motion.div>
+      
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 bg-ink/60 mix-blend-multiply" />
       <div
@@ -50,7 +58,12 @@ export const Hero = () => {
       />
 
       {/* Top brutalist bar */}
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between border-b-4 border-ink bg-yellow px-4 py-2 md:px-8">
+      <motion.div 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between border-b-4 border-ink bg-yellow px-4 py-2 md:px-8"
+      >
         <span className="font-display text-xl md:text-2xl text-ink">EP/01</span>
         <nav className="hidden gap-6 font-mono-brutal text-sm font-bold uppercase md:flex">
           <a href="#about" className="hover-invert px-2 py-1 text-ink">Sobre</a>
@@ -59,7 +72,7 @@ export const Hero = () => {
           <a href="#contact" className="hover-invert px-2 py-1 text-ink">Contacto</a>
         </nav>
         <span className="font-mono-brutal text-xs font-bold uppercase text-ink">PT • EST. 2018</span>
-      </div>
+      </motion.div>
 
       {/* Main title */}
       <div className="relative z-10 flex min-h-screen flex-col items-start justify-center px-4 pt-20 md:px-12">
@@ -67,7 +80,8 @@ export const Hero = () => {
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-4 inline-block border-brutal bg-secondary px-3 py-1 font-mono-brutal text-xs font-bold uppercase text-paper shadow-brutal md:text-sm"
+          whileHover={{ scale: 1.05, rotate: -2 }}
+          className="mb-4 inline-block border-brutal bg-secondary px-3 py-1 font-mono-brutal text-xs font-bold uppercase text-paper shadow-brutal md:text-sm cursor-default"
         >
           ◆ Tattoo Studio • Porto, Portugal
         </motion.div>
@@ -94,7 +108,7 @@ export const Hero = () => {
                 }
                 transition={{
                   duration: 0.9,
-                  delay: i * 0.12,
+                  delay: i * 0.12 + 0.5,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="block"
@@ -106,9 +120,9 @@ export const Hero = () => {
         </h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={revealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.5, type: "spring", stiffness: 200 }}
           className="mt-8 flex max-w-2xl flex-col gap-3"
         >
           <p className="font-mono-brutal text-sm font-bold uppercase text-paper md:text-base">
@@ -124,7 +138,12 @@ export const Hero = () => {
       </div>
 
       {/* Bottom marquee ticker */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t-4 border-ink bg-accent">
+      <motion.div 
+        initial={{ y: 100 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+        className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t-4 border-ink bg-accent"
+      >
         <div className="flex whitespace-nowrap py-3 animate-marquee">
           {Array.from({ length: 8 }).map((_, i) => (
             <span key={i} className="mx-8 font-display text-2xl uppercase text-paper md:text-3xl">
@@ -132,7 +151,7 @@ export const Hero = () => {
             </span>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -67,24 +67,40 @@ export const Booking = () => {
 
         <motion.form
           onSubmit={onSubmit}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-3xl border-brutal bg-paper p-6 shadow-brutal-yellow md:p-10"
         >
           <div className="grid gap-5 md:grid-cols-2">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               <label className={labelClass} htmlFor="name">Nome Completo *</label>
               <input id="name" name="name" required maxLength={100} className={inputClass} placeholder="João Silva" />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               <label className={labelClass} htmlFor="contact">Instagram / WhatsApp *</label>
               <input id="contact" name="contact" required maxLength={100} className={inputClass} placeholder="@username / +351 ..." />
-            </div>
+            </motion.div>
           </div>
 
-          <div className="mt-5">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-5"
+          >
             <label className={labelClass} htmlFor="idea">Ideia da Tatuagem *</label>
             <textarea
               id="idea"
@@ -95,21 +111,37 @@ export const Booking = () => {
               className={inputClass}
               placeholder="Descreve em detalhe a tua ideia, referências, simbolismo..."
             />
-          </div>
+          </motion.div>
 
           <div className="mt-5 grid gap-5 md:grid-cols-2">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
               <label className={labelClass} htmlFor="location">Local do Corpo *</label>
               <input id="location" name="location" required maxLength={100} className={inputClass} placeholder="Antebraço, costas..." />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
               <label className={labelClass} htmlFor="size">Tamanho aproximado (cm) *</label>
               <input id="size" name="size" required maxLength={20} className={inputClass} placeholder="ex: 15x20" />
-            </div>
+            </motion.div>
           </div>
 
           {/* Style toggle */}
-          <div className="mt-5">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="mt-5"
+          >
             <label className={labelClass}>Preferência de cores *</label>
             <div className="grid grid-cols-3 gap-3">
               {([
@@ -129,10 +161,16 @@ export const Booking = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* File upload */}
-          <div className="mt-5">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="mt-5"
+          >
             <label className={labelClass} htmlFor="inspiration">Imagens de Inspiração</label>
             <label
               htmlFor="inspiration"
@@ -155,14 +193,16 @@ export const Booking = () => {
                 }
               }}
             />
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
             className="btn-tactile mt-8 w-full border-brutal bg-accent px-6 py-5 font-display text-2xl uppercase text-paper shadow-brutal md:text-3xl"
           >
             ENVIAR PEDIDO →
-          </button>
+          </motion.button>
         </motion.form>
       </div>
     </section>
