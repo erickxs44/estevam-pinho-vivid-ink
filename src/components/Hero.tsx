@@ -90,7 +90,7 @@ export const Hero = () => {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           data-cursor-hover
-          className={`font-display text-[22vw] leading-[0.82] md:text-[17vw] ${revealed ? "animate-glow-pulse" : ""}`}
+          className={`font-display text-[13vw] leading-[0.82] md:text-[17vw] ${revealed ? "animate-glow-pulse" : ""}`}
           style={{
             color: hover ? "hsl(var(--accent))" : "transparent",
             WebkitTextStroke: hover ? "0" : "clamp(1.5px, 1vw, 4px) hsl(var(--paper))",
@@ -98,7 +98,7 @@ export const Hero = () => {
           }}
         >
           {["ESTEVAM", "PINHO"].map((word, i) => (
-            <span key={word} className="block overflow-hidden pb-4 -mb-4 px-2 -mx-2">
+            <span key={word} className="block overflow-hidden pb-4 -mb-4 px-6 -mx-6">
               <motion.span
                 initial={{ y: "110%", opacity: 0, scale: 0.98 }}
                 animate={
