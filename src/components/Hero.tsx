@@ -94,22 +94,22 @@ export const Hero = () => {
           style={{
             color: hover ? "hsl(var(--accent))" : "transparent",
             WebkitTextStroke: hover ? "0" : "4px hsl(var(--paper))",
-            transition: "color 0.25s ease, -webkit-text-stroke 0.25s ease",
+            transition: "color 0.4s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
           {["ESTEVAM", "PINHO"].map((word, i) => (
             <span key={word} className="block overflow-hidden">
               <motion.span
-                initial={{ y: "110%", opacity: 0, scale: 0.6 }}
+                initial={{ y: "110%", opacity: 0, scale: 0.98 }}
                 animate={
                   revealed
                     ? { y: 0, opacity: 1, scale: 1 }
-                    : { y: "110%", opacity: 0, scale: 0.6 }
+                    : { y: "110%", opacity: 0, scale: 0.98 }
                 }
                 transition={{
-                  duration: 0.9,
-                  delay: i * 0.12 + 0.5,
-                  ease: [0.22, 1, 0.36, 1],
+                  duration: 1.4,
+                  delay: i * 0.15 + 0.6,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 className="block"
               >
@@ -120,9 +120,9 @@ export const Hero = () => {
         </h1>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={revealed ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ delay: 1.2, duration: 0.5, type: "spring", stiffness: 200 }}
+          initial={{ opacity: 0, scale: 0.92, y: 10 }}
+          animate={revealed ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.92, y: 10 }}
+          transition={{ delay: 1.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 flex max-w-2xl flex-col gap-3"
         >
           <p className="font-mono-brutal text-sm font-bold uppercase text-paper md:text-base">
@@ -139,9 +139,9 @@ export const Hero = () => {
 
       {/* Bottom marquee ticker */}
       <motion.div 
-        initial={{ y: 100 }}
-        animate={{ y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t-4 border-ink bg-accent"
       >
         <div className="flex whitespace-nowrap py-3 animate-marquee">

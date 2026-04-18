@@ -61,7 +61,7 @@ export const Portfolio = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.1, margin: "-10% 0px" }}
           className="grid grid-cols-2 gap-4 md:grid-cols-8 md:gap-6 items-start"
         >
           {items.map((item, i) => {
@@ -70,13 +70,13 @@ export const Portfolio = () => {
               <motion.button
                 key={i}
                 variants={{
-                  hidden: { opacity: 0, x, y, scale: 0.9 },
+                  hidden: { opacity: 0, x, y, scale: 0.95 },
                   visible: { 
                     opacity: 1, x: 0, y: 0, scale: 1,
-                    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+                    transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] }
                   }
                 }}
-                whileHover={{ y: -10, rotate: 0, scale: 1.02, zIndex: 5 }}
+                whileHover={{ y: -8, rotate: 0, scale: 1.01, zIndex: 5 }}
                 onClick={() => setActive(item)}
                 data-cursor-hover
                 className={`group relative overflow-hidden border-brutal shadow-brutal bg-paper ${item.span} ${item.rotate}`}

@@ -67,27 +67,27 @@ export const Booking = () => {
 
         <motion.form
           onSubmit={onSubmit}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-3xl border-brutal bg-paper p-6 shadow-brutal-yellow md:p-10"
         >
           <div className="grid gap-5 md:grid-cols-2">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <label className={labelClass} htmlFor="name">Nome Completo *</label>
               <input id="name" name="name" required maxLength={100} className={inputClass} placeholder="João Silva" />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               <label className={labelClass} htmlFor="contact">Instagram / WhatsApp *</label>
               <input id="contact" name="contact" required maxLength={100} className={inputClass} placeholder="@username / +351 ..." />
@@ -95,10 +95,10 @@ export const Booking = () => {
           </div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5"
           >
             <label className={labelClass} htmlFor="idea">Ideia da Tatuagem *</label>
@@ -115,19 +115,19 @@ export const Booking = () => {
 
           <div className="mt-5 grid gap-5 md:grid-cols-2">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <label className={labelClass} htmlFor="location">Local do Corpo *</label>
               <input id="location" name="location" required maxLength={100} className={inputClass} placeholder="Antebraço, costas..." />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <label className={labelClass} htmlFor="size">Tamanho aproximado (cm) *</label>
               <input id="size" name="size" required maxLength={20} className={inputClass} placeholder="ex: 15x20" />
@@ -136,10 +136,10 @@ export const Booking = () => {
 
           {/* Style toggle */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5"
           >
             <label className={labelClass}>Preferência de cores *</label>
@@ -165,10 +165,10 @@ export const Booking = () => {
 
           {/* File upload */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
+            transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-5"
           >
             <label className={labelClass} htmlFor="inspiration">Imagens de Inspiração</label>
@@ -196,8 +196,8 @@ export const Booking = () => {
           </motion.div>
 
           <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
             type="submit"
             className="btn-tactile mt-8 w-full border-brutal bg-accent px-6 py-5 font-display text-2xl uppercase text-paper shadow-brutal md:text-3xl"
           >

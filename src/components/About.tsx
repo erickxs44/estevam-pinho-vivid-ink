@@ -64,20 +64,20 @@ export const About = () => {
             {/* Right — zine text */}
             <div className="space-y-6 lg:col-span-5">
               <motion.p 
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="font-display text-3xl leading-tight text-ink md:text-4xl"
               >
                 <span className="bg-accent px-2 text-paper">Tinta preta</span>, blocos de cor profunda
                 e linhas que <span className="bg-yellow px-2 text-ink">não pedem desculpa</span>.
               </motion.p>
               <motion.p 
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="font-mono-brutal text-base leading-relaxed text-ink/80"
               >
                 Sou o Estevam — tatuador radicado no Porto há mais de 6 anos. Trabalho na
@@ -85,10 +85,10 @@ export const About = () => {
                 e editorial. Cada peça é desenhada de raiz para quem a vai carregar.
               </motion.p>
               <motion.p 
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="font-mono-brutal text-base leading-relaxed text-ink/80"
               >
                 O meu estilo é direto, gráfico, e sem filtros. Penso cada tatuagem como
@@ -97,10 +97,10 @@ export const About = () => {
 
               {/* Stats grid */}
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.6 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="grid grid-cols-3 gap-3 pt-4"
               >
                 {[
@@ -110,7 +110,8 @@ export const About = () => {
                 ].map((s, i) => (
                   <motion.div 
                     key={i} 
-                    whileHover={{ y: -5, scale: 1.05 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                     className={`border-brutal p-3 ${s.c}`}
                   >
                     <div className="font-display text-3xl md:text-4xl">{s.n}</div>
