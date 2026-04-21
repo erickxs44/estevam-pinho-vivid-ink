@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import artistWork from "@/assets/artist-work.jpg";
 
@@ -8,8 +8,16 @@ export const About = () => {
     target: sectionRef,
     offset: ["start end", "center center"],
   });
-  // Iris reveal: clip from 0% to 150%
-  const clipSize = useTransform(scrollYProgress, [0, 1], [0, 150]);
+
+  // Smooth out the scroll progress for a more fluid iris reveal
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Iris reveal: clip from 0% to 150% using smoothed progress
+  const clipSize = useTransform(smoothProgress, [0, 1], [0, 150]);
   const clipPath = useTransform(clipSize, (v) => `circle(${v}% at 50% 50%)`);
 
   return (
@@ -20,7 +28,11 @@ export const About = () => {
     >
       {/* Iris-revealed inner content */}
       <motion.div
-        style={{ clipPath, WebkitClipPath: clipPath as unknown as string }}
+        style={{ 
+          clipPath, 
+          WebkitClipPath: clipPath as unknown as string,
+          willChange: "clip-path"
+        }}
         className="relative bg-paper"
       >
         <div className="relative py-16 md:py-24">
@@ -63,37 +75,39 @@ export const About = () => {
 
             {/* Right — zine text */}
             <div className="space-y-6 lg:col-span-5">
-              <motion.p 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-3xl leading-tight text-ink md:text-4xl"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-6"
               >
-                <span className="bg-accent px-2 text-paper">Tinta preta</span>, blocos de cor profunda
-                e linhas que <span className="bg-yellow px-2 text-ink">não pedem desculpa</span>.
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="font-mono-brutal text-base leading-relaxed text-ink/80"
-              >
-                Sou o Estevam — tatuador radicado no Porto há mais de 6 anos. Trabalho na
-                interseção entre o blackwork tradicional e uma estética dark, gráfica
-                e editorial. Cada peça é desenhada de raiz para quem a vai carregar.
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="font-mono-brutal text-base leading-relaxed text-ink/80"
-              >
-                O meu estilo é direto, gráfico, e sem filtros. Penso cada tatuagem como
-                um cartaz brutalista impresso para sempre na pele.
-              </motion.p>
+                <p className="font-display text-2xl leading-tight text-ink md:text-3xl">
+                  Sou Estevam Pinho, <span className="bg-yellow px-2">tatuador há mais de 8 anos</span>, e a minha ligação com a arte começou muito antes da tatuagem.
+                </p>
+                
+                <p className="font-mono-brutal text-sm leading-relaxed text-ink/90">
+                  Desde sempre fui apaixonado pelo desenho e pelo grafite de rua — formas de expressão que moldaram a minha visão artística e a minha identidade.
+                </p>
+
+                <div className="border-l-4 border-accent pl-4 py-1 italic font-mono-brutal text-sm text-ink/80">
+                  <p>
+                    "A minha trajetória começou de forma inesperada. Ao fazer uma das minhas próprias tatuagens, percebi o atendimento frio, sem interesse na minha ideia... Ali vi alguém a trabalhar apenas pelo dinheiro — e não pelo amor à arte."
+                  </p>
+                </div>
+
+                <p className="font-mono-brutal text-sm leading-relaxed text-ink/90">
+                  Acredito que a tatuagem não começa na máquina — começa no primeiro contacto, na escuta. Cada cliente traz uma história, e o meu trabalho é transformar essa visão em algo ainda maior, com identidade, técnica e propósito.
+                </p>
+
+                <p className="font-mono-brutal text-sm leading-relaxed text-ink/90">
+                  Com foco em <span className="font-bold">full color, preto e cinza, fine line e blackwork</span>, entrego dedicação total. No meu estúdio, o processo é uma experiência completa, onde o cliente se sente ouvido e respeitado.
+                </p>
+
+                <p className="font-display text-xl leading-tight text-ink bg-secondary/10 p-4 border-brutal-2">
+                  "Não procuro ser melhor nem pior — procuro ser diferente. E é nessa diferença que deixo a minha marca."
+                </p>
+              </motion.div>
 
               {/* Stats grid */}
               <motion.div 
@@ -104,9 +118,9 @@ export const About = () => {
                 className="grid grid-cols-3 gap-3 pt-4"
               >
                 {[
-                  { n: "600+", l: "Peças", c: "bg-secondary text-paper" },
-                  { n: "6 anos", l: "Atelier", c: "bg-yellow text-ink" },
-                  { n: "PT", l: "Base", c: "bg-accent text-paper" },
+                  { n: "800+", l: "Obras", c: "bg-secondary text-paper" },
+                  { n: "8 anos", l: "Carreira", c: "bg-yellow text-ink" },
+                  { n: "Unique", l: "Estilo", c: "bg-accent text-paper" },
                 ].map((s, i) => (
                   <motion.div 
                     key={i} 
@@ -114,7 +128,7 @@ export const About = () => {
                     transition={{ type: "spring", stiffness: 300 }}
                     className={`border-brutal p-3 ${s.c}`}
                   >
-                    <div className="font-display text-3xl md:text-4xl">{s.n}</div>
+                    <div className="font-display text-2xl md:text-3xl">{s.n}</div>
                     <div className="font-mono-brutal text-[10px] font-bold uppercase">
                       {s.l}
                     </div>
