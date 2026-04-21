@@ -32,7 +32,7 @@ export const Contact = () => {
               <MapPin className="h-6 w-6 shrink-0 text-yellow" strokeWidth={3} />
               <div>
                 <div className="font-mono-brutal text-xs font-bold uppercase text-yellow">Endereço</div>
-                <div className="font-display text-xl text-paper">Estr. Serra da Mira 38A<br />2650-388 Amadora, Portugal</div>
+                <div className="font-display text-xl text-paper">Rua Vasco de Lima Couto 6 D<br />2700-834 Amadora, Portugal</div>
               </div>
             </div>
             <div className="flex items-start gap-4 border-brutal-2 bg-ink p-4" style={{ borderColor: "hsl(var(--glow-purple))" }}>
