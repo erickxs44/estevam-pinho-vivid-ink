@@ -32,7 +32,7 @@ export const Contact = () => {
               <MapPin className="h-6 w-6 shrink-0 text-yellow" strokeWidth={3} />
               <div>
                 <div className="font-mono-brutal text-xs font-bold uppercase text-yellow">Endereço</div>
-                <div className="font-display text-xl text-paper">Estr. Serra da Mira 38A<br />2650-388 Amadora, Portugal</div>
+                <div className="font-display text-xl text-paper">Rua Vasco de Lima Couto 6 D<br />2700-834 Amadora, Portugal</div>
               </div>
             </div>
             <div className="flex items-start gap-4 border-brutal-2 bg-ink p-4" style={{ borderColor: "hsl(var(--glow-purple))" }}>
@@ -55,7 +55,7 @@ export const Contact = () => {
         >
           <div className="relative h-96 overflow-hidden border-brutal shadow-brutal-magenta md:h-[520px] grayscale contrast-125 invert brightness-75">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.45561113063!2d-9.2311198!3d38.7657731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecc885f8188fb%3A0xed5668b0c8973b4!2sEstr.%20Serra%20da%20Mira%2038A%2C%202650-388%20Amadora%2C%20Portugal!5e0!3m2!1spt!2spt!4v1713460000000!5m2!1spt!2spt"
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.7!2d-9.2219!3d38.7584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecc88e1234567%3A0xabcdef123456!2sRua%20Vasco%20de%20Lima%20Couto%206%20D%2C%202700-834%20Amadora%2C%20Portugal!5e0!3m2!1spt!2spt!4v1713460000000!5m2!1spt!2spt"
               width="100%"
               height="100%"
               style={{ border: 0 }}
